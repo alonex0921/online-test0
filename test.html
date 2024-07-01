@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .test-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-container h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Powered by Mercy and Avneesh Physics Test</h1>
+        <form id="testForm">
+            <div class="question">
+                <h3>1. What is the speed of light?</h3>
+                <label><input type="radio" name="q1" value="A"> 3.0 x 10^8 m/s</label><br>
+                <label><input type="radio" name="q1" value="B"> 3.0 x 10^6 m/s</label><br>
+                <label><input type="radio" name="q1" value="C"> 3.0 x 10^5 m/s</label><br>
+                <label><input type="radio" name="q1" value="D"> 3.0 x 10^7 m/s</label>
+            </div>
+
+            <!-- Repeat similar block for each question up to question 20 -->
+
+            <div class="question">
+                <h3>20. What is the gravitational constant (G)?</h3>
+                <label><input type="radio" name="q20" value="A"> 6.67 x 10^-11 N(m/kg)^2</label><br>
+                <label><input type="radio" name="q20" value="B"> 6.67 x 10^-9 N(m/kg)^2</label><br>
+                <label><input type="radio" name="q20" value="C"> 6.67 x 10^-8 N(m/kg)^2</label><br>
+                <label><input type="radio" name="q20" value="D"> 6.67 x 10^-10 N(m/kg)^2</label>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitTest()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function submitTest() {
+            var name = new URLSearchParams(window.location.search).get('name');
+            var score = 0;
+
+            // Example scoring logic (you can replace it with your own)
+            var answers = {
+                q1: 'A',
+                // Add correct answers for q2 to q19
+                q20: 'A'
+            };
+
+            for (var q in answers) {
+                var radios = document.getElementsByName(q);
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked && radios[i].value === answers[q]) {
+                        score++;
+                    }
+                }
+            }
+
+            alert('Thank you ' + name + '! Your score is: ' + score + '/20');
+        }
+    </script>
+</body>
+</html>
